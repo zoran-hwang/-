@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	body{
+		text-align: center;
+		padding: 0px;
+	}
+	.roll .wrap{
+		width:1030px;
+		height: 224px;
+		position: relative;
+		border:2px solid;
+		overflow: hidden;
+		margin:0 auto;
+	}
+	.roll ul{
+		list-style: none;
+		position: absolute;
+		top:0;
+		left:-40px;
+		margin:0px;
+	}
+	.roll li{
+		float: left;
+		width: 330px;
+		text-align: center;
+	}
+	.roll li a:hover{
+		position:relative;
+		top: 2px;
+	}
+		
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var timer=null;
+			var oDiv=document.getElementById('roll');
+			var oUl=oDiv.getElementsByTagName('ul')[0];			
+			var oLi=oUl.getElementsByTagName('li');
+			oUl.innerHTML+=oUl.innerHTML;
+			oUl.style.width=oLi[0].offsetWidth*oLi.length+'px';
+			function run(){
+				oUl.style.left=oUl.offsetLeft-10+'px';
+				if(oUl.offsetLeft<-oUl.offsetWidth/2){
+					oUl.style.left='-40px';
+				}
+				else if(oUl.offsetLeft>0){
+					oUl.style.Left=oUl.offsetWidth/2;
+				}
+			}
+			timer=setInterval(run,30);
+			oUl.onmouseover=function(){
+				clearInterval(timer);
+			};			
+			oUl.onmouseout=function(){
+				timer=setInterval(run,30);
+			};
+		};		
+	</script>
+</head>
+<body>
+	<div class="roll" id="roll">
+		<div class="wrap">
+			<ul>
+				<li><a href="#"><img src="1.jpg"></a></li>
+				<li><a href="#"><img src="2.jpg"></a></li>
+				<li><a href="#"><img src="3.jpg"></a></li>
+				<li><a href="#"><img src="4.jpg"></a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
